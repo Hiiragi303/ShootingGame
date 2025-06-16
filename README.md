@@ -10,9 +10,12 @@ Processing（Javaベース）を用いて開発した、プレイヤーと敵の
 ---
 
 ## 🛠 使用技術
-- 開発環境：Processing（Javaベース）
-- 音声ライブラリ：Minim
-- 素材：効果音ラボ（https://soundeffect-lab.info/）より使用（規約に準拠）
+- 開発環境：Processing（Javaベース）<br>
+  [Processingダウンロードページ](https://processing.org/download)
+- 音声ライブラリ：Minim<br>
+  Processingの上部タブの"スケッチ"から<br>
+  "ライブラリをインポート"、"Manage Libraries..."でMinimを検索しInstallすると使えるようになります
+- 素材：[効果音ラボ](https://soundeffect-lab.info/)より使用（規約に準拠）
 
 ---
 
@@ -52,6 +55,7 @@ Processing（Javaベース）を用いて開発した、プレイヤーと敵の
 - Qでの武器切り替え時の弾の処理ミス
 - `EnemyLv1`のみ実装、`Boss`や`EnemyLv2`などの拡張予定
 - メニューUIやスコア管理機能を追加予定
+- 現在コメント付け作業を行っています（不完全なコードで申し訳ないです）
 
 ---
 

@@ -1,3 +1,4 @@
+// lv1の敵を生成
 public class EnemyLv1 extends Enemy {
   
   public EnemyLv1(float x, float y, int size) {

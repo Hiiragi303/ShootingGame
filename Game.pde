@@ -1,4 +1,4 @@
-//import 
+//Minimライブラリのインポート(音用)
 import ddf.minim.*;
 import ddf.minim.signals.*;
 
@@ -9,14 +9,19 @@ SineWave wave;
 
 Ship player;
 EnemyMaker em;
+
+// キーの変数
 boolean upPressed = false; boolean downPressed = false;
 boolean rightPressed = false; boolean leftPressed = false;
 boolean enterPressed = false; boolean rPressed = false;
 boolean qPressed = true; boolean tPressed = false;
+
 boolean clear = false;
 
+// ノルマ
 int quota;
 
+// setup
 public void setup() {
  size(880,500);
  frameRate(80);
@@ -28,16 +33,18 @@ public void setup() {
  wave = new SineWave(0, 1.0, out.sampleRate());
  out.addSignal(wave);
 
- 
+ // プレイヤーと敵を生成、ノルマは10
  player = new Player();
  em = new EnemyMaker();
  quota = 10;
 }
-  
+
+// 描画する
 public void draw() {
   background(0);
   tint(102);
   
+  // Qが押された時、クリアしたとき、ゲームオーバーの時
   if (qPressed) {
     setting();
     return;
@@ -51,21 +58,26 @@ public void draw() {
     end();
     return;
   }
+
   ap.pause();
   ap.rewind();
   player.set();
+  //プレイヤーの体力がなくなった時
   if (player.getIsDead()) {
     ap.play();
     player = null;
     return;
   }
   em.set(player);
+  // ノルマ達成したとき
   if (em.count >= quota) clear = true;
-  player.view();
-  em.view();
-  showCount();
+  
+  player.view();  // プレイヤーを描画する
+  em.view();  // 敵を描画する
+  showCount();  // 撃破数を描画する
 }
   
+// 終了したら
 public void end() {
   background(0);
   fill(255,0,0);
@@ -73,18 +85,21 @@ public void end() {
   text("Game over", width/3,height/2);
   fill(255,100,100);
   text("Press R to reset", width/3-50, height/2+35);
+  // Rが押されたら
   if (rPressed) {
     player = new Player();
     em = new EnemyMaker();
   }
 }
 
+// 撃破数を描画する
 public void showCount() {
   fill(255);
   textSize(30);
   text(em.count + " beated", 15,30);
 }
 
+// ゲームクリアしたとき
 public void gg() {
   background(255);
   fill(0);
@@ -92,6 +107,7 @@ public void gg() {
   text("Clear!", width/2-100,height/2);
   fill(0,0,255);
   text("Press R to reset", width/3-50, height/2+35);
+  // Rが押されたら
   if (rPressed) {
     player = new Player();
     em = new EnemyMaker();
@@ -99,7 +115,9 @@ public void gg() {
   }
 }
 
+// (説明画面とメニュー画面)
 public void setting() {
+  // 説明画面
   if (tPressed) {
     background(255);
     fill(0);
@@ -109,6 +127,7 @@ public void setting() {
     text("*Q to back to start", width/3,height/3+100);
     text("*T to back to menu", width/3,height/3+200);
   } else {
+    // メニュー画面
     background(255);
     fill(0,80);
     textSize(50);
@@ -120,7 +139,8 @@ public void setting() {
      }
   }
 }
-  
+
+// キーが押された時
 void keyPressed() {
   if (key == 'w') upPressed = true;
   if (key == 's') downPressed = true;
@@ -135,6 +155,7 @@ void keyPressed() {
   if (key == 'q') qPressed = !qPressed;
 }
 
+// キーが話された時
 void keyReleased() {
   if (key == 'w') upPressed = false;
   if (key == 's') downPressed = false;
@@ -147,6 +168,7 @@ void keyReleased() {
   if (key == 'r') rPressed = false;
 }
 
+// 停止
 void stop() {
   out.close();
   minim.stop();

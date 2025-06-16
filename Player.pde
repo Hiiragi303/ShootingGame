@@ -1,7 +1,8 @@
+// プレイヤークラス
 public class Player extends Ship {
-  private CollisionCheck frameCC;
-  private Gun gun1;
-  private Gun gun2;
+  private CollisionCheck frameCC;  // フレームとの衝突判定用
+  private Gun gun1;  // 銃1
+  private Gun gun2;  // 銃2
   
   public Player() {
     super(width/8,height/2);
@@ -27,6 +28,7 @@ public class Player extends Ship {
     return retv;
   }
 
+  // 移動
   public void move() {
     if (upPressed && frameCC.inRect(c1.getX(),c1.getY()-speed)) y -= speed;
     if (downPressed && frameCC.inRect(c2.getX(),c2.getY()+speed)) y += speed;
@@ -34,12 +36,14 @@ public class Player extends Ship {
     if (leftPressed && frameCC.inRect(c1.getX()-speed,y)) x -= speed;
   }
   
+  // 座標を更新
   public void renewCoordinate() {
     c1.renew(x-size,y-size/2);
     c2.renew(x-size,y+size/2);
     c3.renew(x+size,y);
   }
   
+  // 銃を変える
   public void changeGun() {
     if (enterPressed) {
       gun = gun2;

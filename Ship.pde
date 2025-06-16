@@ -1,14 +1,15 @@
+// プレイヤーや敵の船クラス
 public abstract class Ship {
-  protected float x,y;
-  protected int radius;
-  protected Coordinate c1,c2,c3;
-  protected int size;
-  protected float speed;
-  protected int life;
-  protected boolean isDead; boolean isDeadByWall;
-  protected Gun gun;
-  protected int r,g,b;
-  protected int type;
+  protected float x,y;  // 現在座標
+  protected int radius;  // 半径
+  protected Coordinate c1,c2,c3;  //　座標クラス
+  protected int size;  // サイズ
+  protected float speed;  //　進む速さ
+  protected int life;  //　体力
+  protected boolean isDead; boolean isDeadByWall;  // 体力が無くなったか、壁にぶつかったか
+  protected Gun gun;  // 銃
+  protected int r,g,b;  // 色
+  protected int type;  // 種類: プレイヤーか敵か
   
   public Ship(float x, float y) {
     this.x = x;

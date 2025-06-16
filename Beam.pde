@@ -1,3 +1,4 @@
+// ビーム
 public class Beam extends Gun {
   public Beam(int type) {
     // type, numOfBullets, bulletSize, bulletSpeed, bulletLife, damage, coolTime

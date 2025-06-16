@@ -1,3 +1,4 @@
+// 基本の銃クラス
 public class SimpleGun extends Gun {
   public SimpleGun(int type) {
     // type, numOfBullets, bulletSize, bulletSpeed, bulletLife, damage, coolTime

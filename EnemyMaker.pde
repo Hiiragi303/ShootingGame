@@ -1,3 +1,4 @@
+// 敵生成クラス
 public class EnemyMaker {
   ArrayList<Enemy> enemies;
   private int maxNum = 5;
@@ -10,6 +11,7 @@ public class EnemyMaker {
     
   }
   
+  // 敵生成
   public void create(int level) {
     switch (level) {
       case 1:
@@ -23,18 +25,21 @@ public class EnemyMaker {
     }
   }
   
+  // 削除
   public void delete() {
     checkNum();
     enemies.removeIf(e -> e.getIsDeadByWall());
     enemies.removeIf(e -> e.getIsDead());
   }
   
+  // 敵の数を数える
   public void checkNum() {
     for (Enemy enemy : enemies) {
       if (enemy.getIsDead()) count++;
     }
   }
   
+  // 用意
   public void set(Ship player) {
     if (enemies.size() <= maxNum) {
       create(1);
@@ -46,12 +51,14 @@ public class EnemyMaker {
     delete();
   }
   
+  // プレイヤーの座標をセット
   public void setPlayerCoordinate(float x, float y) {
     for (Enemy enemy : enemies) {
       enemy.setTargetCoordinate(x,y);
     }
   }
   
+  // 描画
   public void view() {
     for (Enemy enemy : enemies) {
       enemy.view();

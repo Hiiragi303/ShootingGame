@@ -7,6 +7,9 @@ Processing（Javaベース）を用いて開発した、プレイヤーと敵の
 
 プレイヤーはマウスカーソル方向に弾を撃ち、10体の敵を倒すと勝利。体力が0になるとゲームオーバーです。
 
+## デモ(YouTubeのリンクです)
+<a href="https://youtu.be/SejoJqqxjvo" target="_blank" rel="noopener noreferrer">動画を見る</a>
+
 ---
 
 ## 🛠 使用技術
